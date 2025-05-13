@@ -170,8 +170,12 @@ function addGoal(button) {
 
     // Отметить как выполненное
     goalItem.querySelector('.mark-complete-btn').addEventListener('click', () => {
-      goalItem.querySelector('span').textContent += ' (выполнено)';
       goalItem.querySelector('.mark-complete-btn').remove();
+      goalItem.querySelector('.delete-goal-btn').remove();
+      goalItem.innerHTML = `
+      <span>${goalItem.querySelector('span').textContent}</span>
+      <button class="complete-btn">Выполнено</button>
+    `
     });
 
     goalsList.appendChild(goalItem);
