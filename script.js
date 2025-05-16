@@ -77,7 +77,7 @@ function addRecord(button) {
       editRecord(recordItem);
     });
 
-    recordsList.appendChild(recordItem);
+    recordsList.prepend(recordItem);
   }
 
   modal.remove();
@@ -178,7 +178,7 @@ function addGoal(button) {
     `
     });
 
-    goalsList.appendChild(goalItem);
+    goalsList.prepend(goalItem);
   }
 
   modal.remove();
