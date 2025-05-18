@@ -57,7 +57,7 @@ function addRecord(button) {
   const title = titleInput.value.trim();
   const text = textArea.value.trim();
 
-  if (title && text) {
+  if (title || text) {
     const recordItem = document.createElement('div');
     const recordId = Date.now(); // Генерация уникального ID
     recordItem.classList.add('record-item');
@@ -182,6 +182,90 @@ function addGoal(button) {
   }
 
   modal.remove();
+}
+
+// Добавление фото
+const addPhotoBtn = document.querySelector('.add-photo-btn');
+const photoList = document.querySelector('.cat-gallery');
+
+addPhotoBtn.addEventListener('click', () => {
+  const modal = document.createElement('div');
+  modal.classList.add('modal');
+  modal.innerHTML = `
+    <div class="modal-content">
+      <h3>Добавить фото</h3>
+      <input class="url" type="url" placeholder="Вставьте ссылку на фото" />
+      <button onclick="addPhoto(this)">Готово</button>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  modal.style.display = 'block';
+});
+
+// Функция для добавления фото
+function addPhoto(button) {
+  const modal = button.closest('.modal');
+  const urlInput = modal.querySelector('.url');
+
+  const url = urlInput.value.trim();
+
+  if (url) {
+    const photoItem = document.createElement('div');
+    const photoId = Date.now(); // Генерация уникального ID
+    photoItem.classList.add('photo-item');
+    photoItem.dataset.id = photoId; // Присваиваем ID записи
+    photoItem.innerHTML = `
+      <img src="${url}" alt="Ваше фото">
+      <button class="delete-photo-btn">X</button>
+    `;
+    // Добавляем обработчик события для удаления фото
+    photoItem.querySelector('.delete-photo-btn').addEventListener('click', () => {
+      photoItem.remove();
+    });
+
+    // Сохраняем текущие данные записи в атрибутах data-*
+    photoItem.dataset.url = url;
+
+    photoList.prepend(photoItem);
+  }
+
+  modal.remove();
+}
+
+// Поп-ап для изображений
+document.addEventListener('click', (event) => {
+  const target = event.target;
+
+  // Если кликнули по изображению
+  if (target.tagName === 'IMG' && target.closest('.cat-gallery')) {
+    openPhotoModal(target.src);
+  }
+
+  // Если кликнули по модальному окну или изображению внутри него
+  if (target.classList.contains('photo-modal') || target.closest('.photo-modal img')) {
+    closePhotoModal();
+  }
+});
+
+// Функция для открытия поп-апа
+function openPhotoModal(imageSrc) {
+  const modal = document.createElement('div');
+  modal.classList.add('photo-modal');
+  modal.innerHTML = `
+    <img src="${imageSrc}" alt="Просмотр фото">
+  `;
+  document.body.appendChild(modal);
+
+  modal.style.display = 'flex'; // Показываем модальное окно
+}
+
+// Функция для закрытия поп-апа
+function closePhotoModal() {
+  const modal = document.querySelector('.photo-modal');
+  if (modal) {
+    modal.remove(); // Удаляем модальное окно
+  }
 }
 
 // Закрытие модального окна при клике вне его
