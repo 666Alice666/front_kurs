@@ -65,6 +65,7 @@ addRecordBtn.addEventListener('click', () => {
           <button class="emotion-btn" data-value="Отчаяние">Отчаяние</button>
           <button class="emotion-btn" data-value="Стресс">Стресс</button>
           <button class="emotion-btn" data-value="Страх">Страх</button>
+          <button class="emotion-btn" data-value="Злость">Злость</button>
         </div>
       </div>
 
@@ -213,6 +214,7 @@ function editRecord(recordItem) {
           <button class="emotion-btn ${oldEmotions.includes('Отчаяние') ? 'selected' : ''}" data-value="Отчаяние">Отчаяние</button>
           <button class="emotion-btn ${oldEmotions.includes('Стресс') ? 'selected' : ''}" data-value="Стресс">Стресс</button>
           <button class="emotion-btn ${oldEmotions.includes('Страх') ? 'selected' : ''}" data-value="Страх">Страх</button>
+          <button class="emotion-btn ${oldEmotions.includes('Злость') ? 'selected' : ''}" data-value="Злость">Злость</button>
         </div>
       </div>
 
