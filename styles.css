@@ -47,6 +47,10 @@ body {
   color: #e0c76c;
 }
 
+.nav a.active {
+  color: #e0c76c;
+}
+
 .section {
   flex: 1; /* Растягивание на всё доступное пространство */
   padding: 20px;
@@ -283,4 +287,91 @@ body {
   border-radius: 8px;
   object-fit: contain; /* Сохраняем пропорции изображения */
   cursor: pointer;
+}
+
+
+/* Модальное окно для мои записи*/
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mood-btn.selected,
+.emotion-btn.selected,  
+.habit-btn.selected {
+  background-color: #e3efee;
+}
+
+.note-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+.modal button[class="mood-btn excellent-btn"]{
+  background-color: #1cd174;
+}
+.modal button[class="mood-btn excellent-btn"]:hover{
+  background-color: #38ce80;
+}
+.modal button[class="mood-btn good-btn"]{
+  background-color: #79D3A5;
+}
+.modal button[class="mood-btn good-btn"]:hover{
+  background-color: #87d1ab;
+}
+.modal button[class="mood-btn normal-btn"]{
+  background-color: #e0c76c;
+}
+.modal button[class="mood-btn normal-btn"]:hover{
+  background-color: #f8ef9e;
+}
+.modal button[class="mood-btn bad-btn"]{
+  background-color: #d26240;
+}
+.modal button[class="mood-btn bad-btn"]:hover{
+  background-color: #cb7459;
+}
+.modal button[class="mood-btn terribly-btn"]{
+  background-color: #8a1c1c;
+}
+.modal button[class="mood-btn terribly-btn"]:hover{
+  background-color: #852e2e;
 }
