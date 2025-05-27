@@ -141,12 +141,16 @@ function addRecord(button) {
   const noteInput = modal.querySelector('.note-input');
   const note = noteInput.value.trim();
 
+  const date = new Date();
+  const str_date = date.toLocaleString("de-DE", { hour12: false });
+
   if (mood || emotions || goodHabits || badHabits || note) {
     const recordItem = document.createElement('div');
     const recordId = Date.now(); // Генерация уникального ID
     recordItem.classList.add('record-item');
     recordItem.dataset.id = recordId; // Присваиваем ID записи
     recordItem.innerHTML = `
+      <strong>${str_date}</strong>
       <strong>Настроение: ${mood || 'Нет данных'}</strong>
       <p><strong>Эмоции:</strong> ${emotions || 'Нет данных'}</p>
       <p><strong>Полезные привычки:</strong> ${goodHabits || 'Нет данных'}</p>
@@ -156,6 +160,7 @@ function addRecord(button) {
     `;
 
     // Сохраняем текущие данные записи в атрибутах data-*
+    recordItem.dataset.str_date = str_date;
     recordItem.dataset.mood = mood;
     recordItem.dataset.emotions = emotions;
     recordItem.dataset.goodHabits = goodHabits;
@@ -175,6 +180,7 @@ function addRecord(button) {
 
 // Функция для редактирования записи
 function editRecord(recordItem) {
+  const str_date = recordItem.dataset.str_date;
   const oldMood = recordItem.dataset.mood;
   const oldEmotions = recordItem.dataset.emotions.split(', ');
   const oldGoodHabits = recordItem.dataset.goodHabits.split(', ');
@@ -191,6 +197,7 @@ function editRecord(recordItem) {
       <!-- Настроение -->
       <div class="form-group">
         <label>Настроение:</label>
+        <label>${str_date}</label>
         <div class="button-group mood-buttons">
           <button class="mood-btn excellent-btn${oldMood === 'Отлично' ? ' selected' : ''}" data-value="Отлично">Отлично</button>
           <button class="mood-btn good-btn${oldMood === 'Хорошо' ? ' selected' : ''}" data-value="Хорошо">Хорошо</button>
@@ -246,7 +253,7 @@ function editRecord(recordItem) {
         <textarea class="note-input">${oldNote}</textarea>
       </div>
 
-      <button onclick="saveEditedRecord(this, '${recordId}')">Сохранить изменения</button>
+      <button onclick="saveEditedRecord(this, '${recordId}', '${str_date}')">Сохранить изменения</button>
     </div>
   `;
   document.body.appendChild(modal);
@@ -258,7 +265,7 @@ function editRecord(recordItem) {
 }
 
 // Функция для сохранения изменений
-function saveEditedRecord(button, recordId) {
+function saveEditedRecord(button, recordId, str_date) {
   const modal = button.closest('.modal');
 
   // Настроение
@@ -287,12 +294,14 @@ function saveEditedRecord(button, recordId) {
   if (recordItem) {
     // Обновляем данные записи в DOM
     recordItem.querySelector('strong').textContent = `Настроение: ${newMood || 'Нет данных'}`;
+    recordItem.querySelector('strong').innerHTML = `${str_date}`;
     recordItem.querySelector('p:nth-of-type(1)').innerHTML = `<strong>Эмоции:</strong> ${newEmotions || 'Нет данных'}`;
     recordItem.querySelector('p:nth-of-type(2)').innerHTML = `<strong>Полезные привычки:</strong> ${newGoodHabits || 'Нет данных'}`;
     recordItem.querySelector('p:nth-of-type(3)').innerHTML = `<strong>Вредные привычки:</strong> ${newBadHabits || 'Нет данных'}`;
     recordItem.querySelector('p:nth-of-type(4)').innerHTML = `<strong>Заметка:</strong> ${newNote || 'Нет данных'}`;
 
     // Обновляем атрибуты data-* для новых данных
+    recordItem.dataset.str_date = str_date;
     recordItem.dataset.mood = newMood;
     recordItem.dataset.emotions = newEmotions;
     recordItem.dataset.goodHabits = newGoodHabits;
