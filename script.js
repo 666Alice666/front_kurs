@@ -197,7 +197,6 @@ function editRecord(recordItem) {
       <!-- Настроение -->
       <div class="form-group">
         <label>Настроение:</label>
-        <label>${str_date}</label>
         <div class="button-group mood-buttons">
           <button class="mood-btn excellent-btn${oldMood === 'Отлично' ? ' selected' : ''}" data-value="Отлично">Отлично</button>
           <button class="mood-btn good-btn${oldMood === 'Хорошо' ? ' selected' : ''}" data-value="Хорошо">Хорошо</button>
