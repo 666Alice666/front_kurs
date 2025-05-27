@@ -332,46 +332,49 @@ body {
 }
 
 .mood-btn.selected,
+.mood-btn.selected:hover,
 .emotion-btn.selected,  
-.habit-btn.selected {
-  background-color: #e3efee;
+.habit-btn.selected,
+.modal button[class="emotion-btn"]:hover,  
+.modal button[class="habit-btn"]:hover,
+.modal button[class="mood-btn excellent-btn"]:hover,
+.modal button[class="mood-btn good-btn"]:hover,
+.modal button[class="mood-btn normal-btn"]:hover,
+.modal button[class="mood-btn bad-btn"]:hover,
+.modal button[class="mood-btn terribly-btn"]:hover {
+  background-image: radial-gradient(#d1bdbd, #605454);
 }
+
+.modal button[class="emotion-btn"],  
+.modal button[class="habit-btn"] {
+  background-color: #cbbeb8;
+}
+
 
 .note-input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #e6e2e2;
   border-radius: 5px;
   resize: vertical;
 }
 
 .modal button[class="mood-btn excellent-btn"]{
-  background-color: #1cd174;
+  background-image: linear-gradient(to right, #1cd174, #79D3A5);
 }
-.modal button[class="mood-btn excellent-btn"]:hover{
-  background-color: #38ce80;
-}
+
 .modal button[class="mood-btn good-btn"]{
-  background-color: #79D3A5;
+  background-image: linear-gradient(to right, #79D3A5, #e0c76c);
 }
-.modal button[class="mood-btn good-btn"]:hover{
-  background-color: #87d1ab;
-}
+
 .modal button[class="mood-btn normal-btn"]{
-  background-color: #e0c76c;
+  background-image: linear-gradient(to right, #e0c76c, #d26240);
 }
-.modal button[class="mood-btn normal-btn"]:hover{
-  background-color: #f8ef9e;
-}
+
 .modal button[class="mood-btn bad-btn"]{
-  background-color: #d26240;
+  background-image: linear-gradient(to right, #d26240, #8a1c1c);
 }
-.modal button[class="mood-btn bad-btn"]:hover{
-  background-color: #cb7459;
-}
+
 .modal button[class="mood-btn terribly-btn"]{
-  background-color: #8a1c1c;
-}
-.modal button[class="mood-btn terribly-btn"]:hover{
-  background-color: #852e2e;
+  background-image: linear-gradient(to right, #8a1c1c, #5b1818);
 }
