@@ -192,11 +192,11 @@ function editRecord(recordItem) {
       <div class="form-group">
         <label>Настроение:</label>
         <div class="button-group mood-buttons">
-          <button class="mood-btn ${oldMood === 'Отлично' ? 'selected' : ''}" data-value="Отлично">Отлично</button>
-          <button class="mood-btn ${oldMood === 'Хорошо' ? 'selected' : ''}" data-value="Хорошо">Хорошо</button>
-          <button class="mood-btn ${oldMood === 'Нормально' ? 'selected' : ''}" data-value="Нормально">Нормально</button>
-          <button class="mood-btn ${oldMood === 'Плохо' ? 'selected' : ''}" data-value="Плохо">Плохо</button>
-          <button class="mood-btn ${oldMood === 'Ужасно' ? 'selected' : ''}" data-value="Ужасно">Ужасно</button>
+          <button class="mood-btn excellent-btn${oldMood === 'Отлично' ? ' selected' : ''}" data-value="Отлично">Отлично</button>
+          <button class="mood-btn good-btn${oldMood === 'Хорошо' ? ' selected' : ''}" data-value="Хорошо">Хорошо</button>
+          <button class="mood-btn normal-btn${oldMood === 'Нормально' ? ' selected' : ''}" data-value="Нормально">Нормально</button>
+          <button class="mood-btn bad-btn${oldMood === 'Плохо' ? ' selected' : ''}" data-value="Плохо">Плохо</button>
+          <button class="mood-btn terribly-btn${oldMood === 'Ужасно' ? ' selected' : ''}" data-value="Ужасно">Ужасно</button>
         </div>
       </div>
 
@@ -204,17 +204,17 @@ function editRecord(recordItem) {
       <div class="form-group">
         <label>Эмоции:</label>
         <div class="button-group emotion-buttons">
-          <button class="emotion-btn ${oldEmotions.includes('Счастье') ? 'selected' : ''}" data-value="Счастье">Счастье</button>
-          <button class="emotion-btn ${oldEmotions.includes('Радость') ? 'selected' : ''}" data-value="Радость">Радость</button>
-          <button class="emotion-btn ${oldEmotions.includes('Волнение') ? 'selected' : ''}" data-value="Волнение">Волнение</button>
-          <button class="emotion-btn ${oldEmotions.includes('Расслабленность') ? 'selected' : ''}" data-value="Расслабленность">Расслабленность</button>
-          <button class="emotion-btn ${oldEmotions.includes('Скука') ? 'selected' : ''}" data-value="Скука">Скука</button>
-          <button class="emotion-btn ${oldEmotions.includes('Тревожность') ? 'selected' : ''}" data-value="Тревожность">Тревожность</button>
-          <button class="emotion-btn ${oldEmotions.includes('Грусть') ? 'selected' : ''}" data-value="Грусть">Грусть</button>
-          <button class="emotion-btn ${oldEmotions.includes('Отчаяние') ? 'selected' : ''}" data-value="Отчаяние">Отчаяние</button>
-          <button class="emotion-btn ${oldEmotions.includes('Стресс') ? 'selected' : ''}" data-value="Стресс">Стресс</button>
-          <button class="emotion-btn ${oldEmotions.includes('Страх') ? 'selected' : ''}" data-value="Страх">Страх</button>
-          <button class="emotion-btn ${oldEmotions.includes('Злость') ? 'selected' : ''}" data-value="Злость">Злость</button>
+          <button class="emotion-btn${oldEmotions.includes('Счастье') ? ' selected' : ''}" data-value="Счастье">Счастье</button>
+          <button class="emotion-btn${oldEmotions.includes('Радость') ? ' selected' : ''}" data-value="Радость">Радость</button>
+          <button class="emotion-btn${oldEmotions.includes('Волнение') ? ' selected' : ''}" data-value="Волнение">Волнение</button>
+          <button class="emotion-btn${oldEmotions.includes('Расслабленность') ? ' selected' : ''}" data-value="Расслабленность">Расслабленность</button>
+          <button class="emotion-btn${oldEmotions.includes('Скука') ? ' selected' : ''}" data-value="Скука">Скука</button>
+          <button class="emotion-btn${oldEmotions.includes('Тревожность') ? ' selected' : ''}" data-value="Тревожность">Тревожность</button>
+          <button class="emotion-btn${oldEmotions.includes('Грусть') ? ' selected' : ''}" data-value="Грусть">Грусть</button>
+          <button class="emotion-btn${oldEmotions.includes('Отчаяние') ? ' selected' : ''}" data-value="Отчаяние">Отчаяние</button>
+          <button class="emotion-btn${oldEmotions.includes('Стресс') ? ' selected' : ''}" data-value="Стресс">Стресс</button>
+          <button class="emotion-btn${oldEmotions.includes('Страх') ? ' selected' : ''}" data-value="Страх">Страх</button>
+          <button class="emotion-btn${oldEmotions.includes('Злость') ? ' selected' : ''}" data-value="Злость">Злость</button>
         </div>
       </div>
 
@@ -222,10 +222,10 @@ function editRecord(recordItem) {
       <div class="form-group">
         <label>Полезные привычки:</label>
         <div class="button-group habit-buttons good-habits">
-          <button class="habit-btn ${oldGoodHabits.includes('Пить много воды') ? 'selected' : ''}" data-value="Пить много воды">Пить много воды</button>
-          <button class="habit-btn ${oldGoodHabits.includes('Заниматься спортом') ? 'selected' : ''}" data-value="Заниматься спортом">Заниматься спортом</button>
-          <button class="habit-btn ${oldGoodHabits.includes('Много ходить') ? 'selected' : ''}" data-value="Много ходить">Много ходить</button>
-          <button class="habit-btn ${oldGoodHabits.includes('Читать книги') ? 'selected' : ''}" data-value="Читать книги">Читать книги</button>
+          <button class="habit-btn${oldGoodHabits.includes('Пить много воды') ? ' selected' : ''}" data-value="Пить много воды">Пить много воды</button>
+          <button class="habit-btn${oldGoodHabits.includes('Заниматься спортом') ? ' selected' : ''}" data-value="Заниматься спортом">Заниматься спортом</button>
+          <button class="habit-btn${oldGoodHabits.includes('Много ходить') ? ' selected' : ''}" data-value="Много ходить">Много ходить</button>
+          <button class="habit-btn${oldGoodHabits.includes('Читать книги') ? ' selected' : ''}" data-value="Читать книги">Читать книги</button>
         </div>
       </div>
 
@@ -233,10 +233,10 @@ function editRecord(recordItem) {
       <div class="form-group">
         <label>Вредные привычки:</label>
         <div class="button-group habit-buttons bad-habits">
-          <button class="habit-btn ${oldBadHabits.includes('Курить') ? 'selected' : ''}" data-value="Курить">Курить</button>
-          <button class="habit-btn ${oldBadHabits.includes('Употреблять алкоголь') ? 'selected' : ''}" data-value="Употреблять алкоголь">Употреблять алкоголь</button>
-          <button class="habit-btn ${oldBadHabits.includes('Фаст-фуд') ? 'selected' : ''}" data-value="Фаст-фуд">Фаст-фуд</button>
-          <button class="habit-btn ${oldBadHabits.includes('Прокрастинация') ? 'selected' : ''}" data-value="Прокрастинация">Прокрастинация</button>
+          <button class="habit-btn${oldBadHabits.includes('Курить') ? ' selected' : ''}" data-value="Курить">Курить</button>
+          <button class="habit-btn${oldBadHabits.includes('Употреблять алкоголь') ? ' selected' : ''}" data-value="Употреблять алкоголь">Употреблять алкоголь</button>
+          <button class="habit-btn${oldBadHabits.includes('Фаст-фуд') ? ' selected' : ''}" data-value="Фаст-фуд">Фаст-фуд</button>
+          <button class="habit-btn${oldBadHabits.includes('Прокрастинация') ? ' selected' : ''}" data-value="Прокрастинация">Прокрастинация</button>
         </div>
       </div>
 
