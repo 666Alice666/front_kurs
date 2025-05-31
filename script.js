@@ -15,7 +15,10 @@ document.querySelectorAll('.nav a').forEach(link => {
 
     // Показываем выбранную страницу
     const pageId = link.dataset.page;
-    document.getElementById(pageId).classList.remove('hidden');
+    const selectedPage = document.getElementById(pageId);
+    selectedPage.classList.remove('hidden');
+
+
   });
 });
 
@@ -456,3 +459,5 @@ document.addEventListener('click', (event) => {
     event.target.remove();
   }
 });
+
+

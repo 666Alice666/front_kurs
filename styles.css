@@ -203,7 +203,7 @@ body {
 .goal-item {
   background-color: #B1A29F;
   padding: 15px;
-  margin-right: 700px;
+  max-width: 700px;
   margin-bottom: 10px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -352,4 +352,21 @@ body {
 
 .modal button[class="mood-btn terribly-btn"]{
   background-image: linear-gradient(to right, #8a1c1c, #5b1818);
+}
+
+
+/* Контейнеры для графиков */
+.chart-container {
+  margin-bottom: 30px;
+  padding: 15px;
+  max-width: 700px;
+  background-color: #B1A29F;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Размеры графиков */
+canvas {
+  width: 100%;
+  height: auto;
 }
