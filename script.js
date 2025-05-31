@@ -18,7 +18,10 @@ document.querySelectorAll('.nav a').forEach(link => {
     const selectedPage = document.getElementById(pageId);
     selectedPage.classList.remove('hidden');
 
-
+    // Если выбрана страница "Аналитика", обновляем графики
+    if (pageId === 'analytics') {
+      updateAnalytics();
+    }
   });
 });
 
@@ -179,6 +182,8 @@ function addRecord(button) {
   }
 
   modal.remove();
+  // После добавления записи обновляем аналитику
+  updateAnalytics();
 }
 
 // Функция для редактирования записи
@@ -312,6 +317,8 @@ function saveEditedRecord(button, recordId, str_date) {
   }
 
   modal.remove();
+  // После сохранения изменений обновляем аналитику
+  updateAnalytics();
 }
 
 // Добавление цели
@@ -460,4 +467,182 @@ document.addEventListener('click', (event) => {
   }
 });
 
+const moodMapping = {
+  'Отлично': 5,
+  'Хорошо': 4,
+  'Нормально': 3,
+  'Плохо': 2,
+  'Ужасно': 1,
+};
 
+// Глобальный объект для хранения экземпляров графиков
+const charts = {
+  moodChart: null,
+  emotionChart: null,
+  goodHabitsChart: null,
+  badHabitsChart: null,
+};
+
+function updateAnalytics() {
+  // Уничтожаем старые графики, если они существуют
+  if (charts.moodChart) charts.moodChart.destroy();
+  if (charts.emotionChart) charts.emotionChart.destroy();
+  if (charts.goodHabitsChart) charts.goodHabitsChart.destroy();
+  if (charts.badHabitsChart) charts.badHabitsChart.destroy();
+
+  const records = document.querySelectorAll('.record-item');
+
+  // Собираем данные из записей
+  const moodData = [];
+  const emotionCounts = {};
+  const goodHabitsCounts = {};
+  const badHabitsCounts = {};
+
+  records.forEach(record => {
+    const date = record.dataset.id; // Используем ID записи как дату
+    const mood = record.dataset.mood;
+    const emotions = record.dataset.emotions.split(', ').filter(Boolean);
+    const goodHabits = record.dataset.goodHabits.split(', ').filter(Boolean);
+    const badHabits = record.dataset.badHabits.split(', ').filter(Boolean);
+
+    // Данные для графика настроения
+    if (mood && moodMapping[mood]) {
+      moodData.push({ date, mood: moodMapping[mood] });
+    }
+
+    // Данные для графика эмоций
+    emotions.forEach(emotion => {
+      emotionCounts[emotion] = (emotionCounts[emotion] || 0) + 1;
+    });
+
+    // Данные для графика полезных привычек
+    goodHabits.forEach(habit => {
+      goodHabitsCounts[habit] = (goodHabitsCounts[habit] || 0) + 1;
+    });
+
+    // Данные для графика вредных привычек
+    badHabits.forEach(habit => {
+      badHabitsCounts[habit] = (badHabitsCounts[habit] || 0) + 1;
+    });
+  });
+
+  // Построение графика настроения
+  const moodLabels = moodData.map(item => new Date(Number(item.date)).toLocaleDateString());
+  const moodValues = moodData.map(item => item.mood); // Теперь это числовые значения
+
+  const moodChartCtx = document.getElementById('moodChart').getContext('2d');
+  charts.moodChart = new Chart(moodChartCtx, {
+    type: 'line',
+    data: {
+      labels: moodLabels,
+      datasets: [{
+        label: 'Настроение',
+        data: moodValues,
+        borderColor: '#e0c76c',
+        backgroundColor: 'rgba(224, 199, 108, 0.2)',
+        borderWidth: 2,
+        fill: true,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: true },
+      },
+      scales: {
+        x: { title: { display: true, text: 'Дата' } },
+        y: { title: { display: true, text: 'Настроение' }, min: 1, max: 5 }
+      }
+    }
+  });
+
+  // Построение графика эмоций
+  const emotionChartCtx = document.getElementById('emotionChart').getContext('2d');
+  charts.emotionChart = new Chart(emotionChartCtx, {
+    type: 'bar',
+    data: {
+      labels: Object.keys(emotionCounts),
+      datasets: [{
+        label: 'Количество эмоций',
+        data: Object.values(emotionCounts),
+        backgroundColor: '#b62b57',
+        borderColor: '#b62b57',
+        borderWidth: 1,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+      },
+      scales: {
+        x: { title: { display: true, text: 'Эмоции' } },
+        y: { title: { display: true, text: 'Количество' } }
+      }
+    }
+  });
+
+  // Построение графика полезных привычек
+  const goodHabitsChartCtx = document.getElementById('goodHabitsChart').getContext('2d');
+  charts.goodHabitsChart = new Chart(goodHabitsChartCtx, {
+    type: 'bar',
+    data: {
+      labels: Object.keys(goodHabitsCounts),
+      datasets: [{
+        label: 'Количество полезных привычек',
+        data: Object.values(goodHabitsCounts),
+        backgroundColor: '#79D3A5',
+        borderColor: '#79D3A5',
+        borderWidth: 1,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+      },
+      scales: {
+        x: { title: { display: true, text: 'Полезные привычки' } },
+        y: { title: { display: true, text: 'Количество' } }
+      }
+    }
+  });
+
+  // Построение графика вредных привычек
+  const badHabitsChartCtx = document.getElementById('badHabitsChart').getContext('2d');
+  charts.badHabitsChart = new Chart(badHabitsChartCtx, {
+    type: 'bar',
+    data: {
+      labels: Object.keys(badHabitsCounts),
+      datasets: [{
+        label: 'Количество вредных привычек',
+        data: Object.values(badHabitsCounts),
+        backgroundColor: '#b62b57',
+        borderColor: '#b62b57',
+        borderWidth: 1,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+      },
+      scales: {
+        x: { title: { display: true, text: 'Вредные привычки' } },
+        y: { title: { display: true, text: 'Количество' } }
+      }
+    }
+  });
+}
+
+
+// Очистка контейнеров графиков
+function clearCharts() {
+  const chartContainers = document.querySelectorAll('.chart-container canvas');
+  chartContainers.forEach(canvas => {
+    const parent = canvas.parentElement;
+    parent.innerHTML = ''; // Очищаем содержимое контейнера
+    const newCanvas = document.createElement('canvas'); // Создаем новый элемент <canvas>
+    parent.appendChild(newCanvas); // Добавляем его обратно
+  });
+}

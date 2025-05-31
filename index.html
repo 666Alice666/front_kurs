@@ -37,136 +37,24 @@
   <div class="chart-container">
     <h3>Настроение</h3>
     <canvas id="moodChart"></canvas>
-    <script>
-      
-  var moodChartCtx = document.getElementById("moodChart");
-  var ctx = moodChartCtx.getContext("2d");
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Отлично', 'Хорошо', 'Нормально', 'Плохо', 'Ужасно'],
-      datasets: [{
-        label: 'Настроение',
-        data: ['2', '4', '1', '1', '1'],
-        backgroundColor: '#e0c76c',
-        borderColor: 'black',
-        borderWidth: 1,
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display: false },
-      },
-      scales: {
-        x: { title: { display: true, text: 'Настроение' } },
-        y: { title: { display: true, text: 'Количество' } }
-      }
-    }
-  });
-</script>
   </div>
 
   <!-- График эмоций -->
   <div class="chart-container">
     <h3>Эмоции</h3>
     <canvas id="emotionChart"></canvas>
-    <script>
-      
-  var emotionChartCtx = document.getElementById("emotionChart");
-  var ctx = emotionChartCtx.getContext("2d");
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ["Счастье", "Радость", "Волнение", "Расслабленность", "Скука", "Тревожность", "Грусть", "Отчаяние", "Стресс", "Страх", "Злость"],
-      datasets: [{
-        label: 'Эмоции',
-        data: ['1', '1', '2', '5', '0', '1', '1', '4', '1', '0', '1'],
-        backgroundColor: '#d26240',
-        borderColor: 'black',
-        borderWidth: 1,
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display: false },
-      },
-      scales: {
-        x: { title: { display: true, text: 'Эмоции' } },
-        y: { title: { display: true, text: 'Количество' } }
-      }
-    }
-  });
-</script>
   </div>
 
   <!-- График полезных привычек -->
   <div class="chart-container">
     <h3>Полезные привычки</h3>
     <canvas id="goodHabitsChart"></canvas>
-     <script>
-      
-  var goodHabitsChartCtx = document.getElementById("goodHabitsChart");
-  var ctx = goodHabitsChartCtx.getContext("2d");
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ["Пить много воды", "Заниматься спортом", "Много ходить", "Читать книги"],
-      datasets: [{
-        label: 'Полезные привычки',
-        data: ['1', '1', '2', '3'],
-        backgroundColor: '#79D3A5',
-        borderColor: 'black',
-        borderWidth: 1,
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display: false },
-      },
-      scales: {
-        x: { title: { display: true, text: 'Полезные привычки' } },
-        y: { title: { display: true, text: 'Количество' } }
-      }
-    }
-  });
-</script>
   </div>
 
   <!-- График вредных привычек -->
   <div class="chart-container">
     <h3>Вредные привычки</h3>
     <canvas id="badHabitsChart"></canvas>
-     <script>
-      
-  var badHabitsChartCtx = document.getElementById("badHabitsChart");
-  var ctx = badHabitsChartCtx.getContext("2d");
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ["Курить", "Употреблять алкоголь", "Фаст-фуд", "Прокрастинация"],
-      datasets: [{
-        label: 'Вредные привычки',
-        data: ['0', '1', '2', '2'],
-        backgroundColor: '#b62b57',
-        borderColor: 'black',
-        borderWidth: 1,
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display: false },
-      },
-      scales: {
-        x: { title: { display: true, text: 'Вредные привычки' } },
-        y: { title: { display: true, text: 'Количество' } }
-      }
-    }
-  });
-</script>
   </div>
 </section>
 
