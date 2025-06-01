@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- Подключение Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Помощник для отслеживания здоровья</title>
+</head>
+<body>
+  <!-- Шапка -->
+  <header class="header">
+    <h1>Помощник для отслеживания здоровья</h1>
+    <nav class="nav">
+        <ul>
+            <li><a href="#" data-page="records" class="active">Мои записи</a></li>
+            <li><a href="#" data-page="analytics">Аналитика</a></li>
+            <li><a href="#" data-page="goals">Мои цели</a></li>
+            <li><a href="#" data-page="relax">Психологический релакс</a></li>
+        </ul>
+    </nav>
+  </header>
+
+  <!-- Главная страница (Мои записи) -->
+  <section id="records" class="section hidden">
+    <h2>Мои записи</h2>
+    <button class="add-record-btn">Добавить запись</button>
+    <div class="records-list"></div>
+  </section>
+
+  <!-- Раздел "Аналитика" -->
+<section id="analytics" class="section hidden">
+  <h2>Аналитика</h2>
+  
+  <!-- График настроения -->
+  <div class="chart-container">
+    <h3>Настроение</h3>
+    <canvas id="moodChart"></canvas>
+  </div>
+
+  <!-- График эмоций -->
+  <div class="chart-container">
+    <h3>Эмоции</h3>
+    <canvas id="emotionChart"></canvas>
+  </div>
+
+  <!-- График полезных привычек -->
+  <div class="chart-container">
+    <h3>Полезные привычки</h3>
+    <canvas id="goodHabitsChart"></canvas>
+  </div>
+
+  <!-- График вредных привычек -->
+  <div class="chart-container">
+    <h3>Вредные привычки</h3>
+    <canvas id="badHabitsChart"></canvas>
+  </div>
+</section>
+
+  <!-- Мои цели -->
+  <section id="goals" class="section hidden">
+    <h2>Мои цели</h2>
+    <button class="add-goal-btn">Добавить цель</button>
+    <div class="goals-list"></div>
+  </section>
+
+  <!-- Психологический релакс -->
+  <section id="relax" class="section hidden">
+    <h2>Психологический релакс</h2>
+    <button class="add-photo-btn">Добавить фото</button>
+    <div class="cat-gallery">
+      <img src="./images/cat.jpg" alt="Котик 1">
+      <img src="./images/cat2.jpg" alt="Котик 2">
+      <img src="./images/cat3.jpg" alt="Котик 3">
+      <img src="./images/cat4.jpg" alt="Котик 4">
+      <img src="./images/cat5.jpg" alt="Котик 5">
+      <img src="./images/cat6.jpg" alt="Котик 6">
+      <img src="./images/cat7.jpg" alt="Котик 7">
+      <img src="./images/cat8.jpg" alt="Котик 8">
+      <img src="./images/cat9.jpg" alt="Котик 9">
+    </div>
+  </section>
+
+  <!-- Подвал -->
+  <footer class="footer">
+    <p>Автор: Факеева Алиса</p>
+    <p>Контакты: alisafakeeva@mail.com</p>
+  </footer>
+</body>
+</html>

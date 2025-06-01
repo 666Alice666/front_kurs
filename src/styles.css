@@ -1,0 +1,384 @@
+/* Общие стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Скрытие страниц */
+.hidden {
+  display: none;
+}
+
+html, body {
+  height: 100%; /* Высота страницы на весь экран */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #9FEDD7;
+  color: #000000; /* Белый текст */
+  line-height: 1.6;
+  display: flex; /* Flexbox для вертикального расположения */
+  flex-direction: column; /* Элементы располагаются сверху вниз */
+}
+
+.header {
+  background-color: #016670;
+  padding: 20px;
+  text-align: center;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: #e0c76c;
+}
+
+.nav a.active {
+  color: #e0c76c;
+}
+
+.section {
+  flex: 1; /* Растягивание на всё доступное пространство */
+  padding: 20px;
+  margin: 20px;
+  background-color: #e1dacf;
+  background-image: url('./images/listik.png');
+  background-size: 900px 900px;
+  background-position: right;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Добавляем прокрутку, если контент не помещается */
+}
+
+.footer {
+  background-color: #016670;
+  padding: 20px;
+  text-align: center;
+  color: #ecf0f1;
+}
+
+.add-record-btn,
+.add-goal-btn,
+.add-photo-btn {
+  background-color: #e0c76c;
+  color: #000000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-record-btn:hover,
+.add-goal-btn:hover,
+.add-photo-btn:hover {
+  background-color: #f8ef9e;
+}
+
+.records-list,
+.goals-list {
+  margin-top: 20px;
+}
+
+.cat-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: max-content;
+    gap: 10px;
+    align-items: center;
+    justify-items: center;
+    margin-top: 20px;
+}
+
+.cat-gallery img {
+  max-width: 100%;
+  max-height: 400px;
+  max-width: 500px;
+  border: 5px solid transparent;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.cat-gallery img:hover {
+  transform: scale(1.1);
+  border-color: #e0c76c;
+}
+
+.modal input[type="text"],
+.modal textarea,
+.url {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ecf0f1;
+  border-radius: 5px;
+  background-color: rgba(60, 57, 57, 0.8);
+  color: #ecf0f1;
+}
+
+.modal button {
+  background-color: #e0c76c;
+  color: #000000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal button:hover {
+  background-color: #f8ef9e;
+}
+
+/* Стили для кнопок удаления и отметки */
+.delete-goal-btn,
+.delete-photo-btn {
+  background-color: #b62b57;
+  color: #000000;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-goal-btn:hover,
+.delete-photo-btn:hover {
+  background-color: #e34a7d;
+}
+
+.mark-complete-btn {
+  background-color: #e0c76c;
+  color: #000000;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mark-complete-btn:hover {
+  background-color: #f8ef9e;
+}
+
+.complete-btn {
+    background-color: #79D3A5;
+    color: #000000;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Стили для кнопки "Редактировать" */
+.edit-record-btn {
+  background-color: #e0c76c;
+  color: #000000;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-record-btn:hover {
+  background-color: #f8ef9e;
+}
+
+/* Визуальное выделение записей и целей */
+.record-item,
+.goal-item {
+  background-color: #B1A29F;
+  padding: 15px;
+  max-width: 700px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.record-item strong,
+.goal-item span {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Стили для контейнера с фото */
+.photo-item {
+  position: relative;
+  display: inline-block; /* Фото и кнопка будут выровнены вместе */
+}
+
+.noexist {
+  background-image: url('./images/cat.jpg');
+  background-image: url('./images/cat2.jpg');
+  background-image: url('./images/cat3.jpg');
+  background-image: url('./images/cat4.jpg');
+  background-image: url('./images/cat5.jpg');
+  background-image: url('./images/cat6.jpg');
+  background-image: url('./images/cat7.jpg');
+  background-image: url('./images/cat8.jpg');
+  background-image: url('./images/cat9.jpg');
+}
+
+/* Стили для кнопки "X" */
+.photo-item .delete-photo-btn {
+  position: absolute; /* Позиционируем кнопку относительно родительского контейнера */
+  top: 10px;
+  right: 10px;
+  background-color: rgba(182, 43, 87, 0.7);
+  color: #222121; /* Белый текст */
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  line-height: 25px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.photo-item .delete-photo-btn:hover {
+  background-color: #e34a7d;
+}
+
+/* Стили для модального окна с изображением */
+.photo-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  object-fit: contain; /* Сохраняем пропорции изображения */
+  cursor: pointer;
+}
+
+
+/* Модальное окно*/
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mood-btn.selected,
+.mood-btn.selected:hover,
+.emotion-btn.selected,  
+.habit-btn.selected,
+.modal button[class="emotion-btn"]:hover,  
+.modal button[class="habit-btn"]:hover,
+.modal button[class="mood-btn excellent-btn"]:hover,
+.modal button[class="mood-btn good-btn"]:hover,
+.modal button[class="mood-btn normal-btn"]:hover,
+.modal button[class="mood-btn bad-btn"]:hover,
+.modal button[class="mood-btn terribly-btn"]:hover {
+  background-image: radial-gradient(#d1bdbd, #605454);
+}
+
+.modal button[class="emotion-btn"],  
+.modal button[class="habit-btn"] {
+  background-color: #cbbeb8;
+}
+
+
+.note-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e6e2e2;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+.modal button[class="mood-btn excellent-btn"]{
+  background-image: linear-gradient(to right, #1cd174, #79D3A5);
+}
+
+.modal button[class="mood-btn good-btn"]{
+  background-image: linear-gradient(to right, #79D3A5, #e0c76c);
+}
+
+.modal button[class="mood-btn normal-btn"]{
+  background-image: linear-gradient(to right, #e0c76c, #d26240);
+}
+
+.modal button[class="mood-btn bad-btn"]{
+  background-image: linear-gradient(to right, #d26240, #8a1c1c);
+}
+
+.modal button[class="mood-btn terribly-btn"]{
+  background-image: linear-gradient(to right, #8a1c1c, #5b1818);
+}
+
+
+/* Контейнеры для графиков */
+.chart-container {
+  margin-bottom: 30px;
+  padding: 15px;
+  max-width: 700px;
+  background-color: #B1A29F;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Размеры графиков */
+canvas {
+  width: 100%;
+  height: auto;
+}
